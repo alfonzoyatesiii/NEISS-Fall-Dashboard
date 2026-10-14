@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Falls in Older Adults: Who Ends Up in the Hospital?</title>
+  <meta name="description" content="A data project on 57,209 emergency-room visits for falls by adults 65 and older (U.S. injury surveillance data, 2024), with an interactive dashboard.">
+  <meta property="og:title" content="Falls in Older Adults: Who Ends Up in the Hospital?">
+  <meta property="og:description" content="What 57,209 emergency-room fall visits can tell us about where to look first.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#0b1f3a">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <nav class="nav" aria-label="Page sections">
+    <div class="wrap">
+      <span class="brand">Falls in Older Adults</span>
+      <a href="#overview">Overview</a>
+      <a href="#findings">Findings</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#test">Next Steps</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Data analysis project &middot; DESIGNTK 530</p>
+          <h1>When an older adult falls, what decides a trip to the hospital?</h1>
+          <p class="lede">I studied 57,209 emergency-room visits for falls by people 65 and older. The situations behind the fall, not just the age of the person, were linked to who was admitted to the hospital and who went home.</p>
+          <p>
+            <a class="btn" href="#dashboard">Try the interactive dashboard</a>
+            <a class="btn ghost" href="#findings">See what I found</a>
+          </p>
+          <p class="meta">By Alfonzo Yates &middot; Fall 2026 &middot; Data: U.S. Consumer Product Safety Commission</p>
+        </div>
+        <!-- PHOTO 1 (top of page): save a photo as docs/images/hero.jpg. Edit the alt text to describe the photo you choose. -->
+        <figure class="photo">
+          <img src="images/hero.jpg" alt="A smiling older woman at home" onerror="this.parentElement.hidden=true">
+        </figure>
+      </div>
+      <ul class="stats" aria-label="Headline numbers">
+        <li><span class="num">57,209</span><span class="label">ER fall visits studied (2024)</span></li>
+        <li><span class="num">1 in 3</span><span class="label">ended in a hospital admission</span></li>
+        <li><span class="num">50%</span><span class="label">of visits where the person was found down or couldn't get up</span></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== OVERVIEW ===================== -->
+    <section id="overview">
+      <div class="wrap">
+        <h2>Overview</h2>
+        <p class="kicker">Behind every number in this project is a real person, and often a family who was worried about them.</p>
+
+        <div class="split">
+          <!-- PHOTO 2: save a photo as docs/images/overview.jpg (landscape, about 1200 x 900). Edit the alt text. -->
+          <figure class="photo">
+            <img src="images/overview.jpg" alt="An older man and a younger family member talking together" loading="lazy" onerror="this.parentElement.hidden=true">
+          </figure>
+          <div>
+            <p>Most of us know someone who has fallen: a grandparent on the stairs, a neighbor in the bathroom late at night, a parent who was found on the floor hours later. For an older adult, a fall can mean much more than a bruise. It can mean a hospital stay, a long recovery, and a lasting loss of confidence and independence. For the people who love and care for them, it often means worry, and hard decisions about how to help.</p>
+            <p>I wanted to understand what emergency-room records can tell us about these moments. The goal is not to place blame on anyone who has fallen. It is to learn which situations are most often followed by a hospital stay, so that families, caregivers, and the home-safety and community-health teams who support older adults have a better sense of where to look first.</p>
+            <p>These records come from real visits, but they cannot tell the whole story of any one person's life. I tried to keep that in mind throughout, and I explain what the data can and cannot say along the way.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Main question</h3>
+            <p>Among older adults treated in an emergency room (ER) after a fall, which circumstances go along with being admitted to the hospital instead of treated and sent home?</p>
+          </div>
+          <div class="card">
+            <h3>Who this is for</h3>
+            <p>Families and caregivers, and the home-safety and community-health teams who support older adults. They know the topic well, but may be less at ease with statistics, so I explain everything in plain words.</p>
+          </div>
+        </div>
+        <div class="card note" style="margin-top:20px">
+          <h3>What I expected, and what happened</h3>
+          <p>I expected stairs and bathrooms to be the most dangerous places. The bathroom part held up. The stairs part did not: falls where the hospital note mentioned stairs ended in admission less often than average. The highest admission rates were tied to medical situations, such as dizziness or being found on the floor.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DATA ===================== -->
+    <section id="data">
+      <div class="wrap">
+        <h2>Where the data comes from</h2>
+        <p class="kicker">Real, anonymous hospital records, not a survey.</p>
+        <table class="facts">
+          <tbody>
+            <tr><th scope="row">Source</th><td><a href="https://www.cpsc.gov/Research--Statistics/NEISS-Injury-Data">U.S. Consumer Product Safety Commission, National Electronic Injury Surveillance System (NEISS)</a>, 2024 annual data.</td></tr>
+            <tr><th scope="row">How it was collected</th><td>A national sample of hospital emergency departments. Staff record each injury visit: age, sex, where it happened, how the visit ended, and a short written note about what happened.</td></tr>
+            <tr><th scope="row">What I kept</th><td>Visits from January to December 2024 by adults 65 and older whose note describes a fall, with a known outcome: 57,209 visits, out of 361,672 records in the file.</td></tr>
+            <tr><th scope="row">One row is</th><td>One ER visit for one injury (not one person across the year).</td></tr>
+            <tr><th scope="row">Written notes</th><td>Each visit has a short note, for example "fell while walking to the bathroom." I read a random sample of 60 and searched all of them for common situations.</td></tr>
+          </tbody>
+        </table>
+        <div class="card note" style="margin-top:20px">
+          <h3>Limits to keep in mind</h3>
+          <ul class="plain">
+            <li>Only people who reached an ER are included. Falls without an ER visit are missing, so this cannot say how often older adults fall.</li>
+            <li>"Admitted" can reflect an illness found during the visit, not how bad the fall injury was.</li>
+            <li>Notes are short. I found situations by searching for keywords, which is imperfect.</li>
+            <li>Percentages are sample percentages, not national totals. Using the data's sampling weights lowers the overall share from 32.5% to 29.7%, but the ordering of the groups stays the same.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FINDINGS ===================== -->
+    <section id="findings">
+      <div class="wrap">
+        <h2>What I found</h2>
+        <p class="kicker">Six patterns, in plain language. Each one describes these ER visits. None of them is a prediction for any one person.</p>
+
+        <!-- PHOTO 3: save a wide photo as docs/images/home.jpg (about 1600 x 600). Edit the alt text. -->
+        <figure class="photo banner">
+          <img src="images/home.jpg" alt="An older woman reading in a bright living room" loading="lazy" onerror="this.parentElement.hidden=true">
+        </figure>
+
+        <figure>
+          <img src="images/outcomes.png" alt="A single bar showing that 62.5 percent of ER fall visits ended with treatment and release, 32.5 percent with admission to the hospital, and 5 percent with another outcome." width="1440" height="416">
+          <figcaption>Most visits end at home. About two in three ER fall visits ended with the person treated and released. About one in three ended in admission.</figcaption>
+        </figure>
+
+        <ol class="findings">
+          <li><strong>Admission rises with age.</strong> 28% of visits at ages 65&ndash;74, 33% at 75&ndash;84, and 37% at 85 and older.</li>
+          <li><strong>Medical situations stand out.</strong> When the note describes being found on the floor or unable to get up, 50% ended in admission. For dizziness or fainting it was 47%, and for dementia or confusion 42%.</li>
+          <li><strong>Bedroom and bathroom falls were admitted more often</strong> (about 37%) than other falls (about 32%).</li>
+          <li><strong>Stairs were not the top risk.</strong> Notes mentioning stairs or steps were admitted 29% of the time, below the 32.5% average. This does not mean stairs are safe. It only describes people who came to the ER.</li>
+          <li><strong>Falls at home were admitted more often</strong> (36%) than falls on other public property (27%), in the street (23%), or at recreation sites (20%).</li>
+          <li><strong>Few notes mention darkness (0.2%) or night-time (1.9%).</strong> The data cannot say whether lighting matters, which is why I propose testing it below.</li>
+        </ol>
+
+        <h3 style="margin-top:38px">The charts behind these findings</h3>
+        <figure>
+          <img src="images/age_sex.png" alt="Bar chart of the share of fall visits admitted by age group and sex. Women: 25 percent at 65 to 74, 31 percent at 75 to 84, 37 percent at 85 and older. Men: 32, 36 and 38 percent." width="1440" height="832">
+          <figcaption>Admission rises with age for both women and men. Men were admitted more often than women at younger ages, but the gap nearly disappears at 85 and older. I checked whether more fractures in men explained this. It did not: women had the higher share of fractures.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/location.png" alt="Horizontal bar chart of the share of fall visits admitted by location: home 36 percent, other public property 27 percent, street or highway 23 percent, recreation or sports place 20 percent." width="1440" height="704">
+          <figcaption>Home falls ended in admission most often. *About half of the "other public property" notes mention a nursing or assisted-living facility, so that group is not only public places. Home still comes out higher when those are left out (36% vs. 25%).</figcaption>
+        </figure>
+        <figure>
+          <img src="images/themes.png" alt="Horizontal bar chart of the share admitted for visits whose note mentions each situation. Found down 50 percent, dizzy or fainted 47, dementia or confusion 42, bathroom 38, bed 37, stairs 29, outdoors 22, tripped 22. Average line at 32.5 percent." width="1440" height="864">
+          <figcaption>The situation described in the note matters. Amber bars are above the average for all visits. A note can mention more than one situation, and these rates are not adjusted for age. I checked: adjusting for age barely changes them.</figcaption>
+        </figure>
+
+        <h3>In their own words</h3>
+        <p class="narrow">A few shortened hospital notes, with their public case numbers. They show why the numbers look the way they do.</p>
+        <div class="quotes">
+          <blockquote>"Fell while he was walking to the bathroom."<cite>Case 241160357 &middot; admitted</cite></blockquote>
+          <blockquote>"Fell on the floor &amp; was unable to get up. Down overnight til found."<cite>Case 250260398 &middot; admitted</cite></blockquote>
+          <blockquote>"Tripped on his pants, fell backwards striking his head."<cite>Case 240434687 &middot; treated and released</cite></blockquote>
+        </div>
+        <p class="narrow" style="margin-top:16px">Some notes complicate the story. A few people were admitted for an illness found during the visit (for example, heart failure after a fall in the shower), not for the fall injury itself. And some serious-sounding falls, like one over a flight of stairs with a broken arm, ended with the person going home.</p>
+      </div>
+    </section>
+
+    <!-- ===================== DASHBOARD ===================== -->
+    <section id="dashboard">
+      <div class="wrap">
+        <h2>Explore it yourself</h2>
+        <p class="kicker">Pick an age range and where the fall happened. The dashboard shows how ER fall visits like that ended, and how many visits it is based on.</p>
+        <div class="embed-frame">
+          <iframe src="https://neiss-fall-dashboard.streamlit.app/?embed=true" title="Interactive dashboard: ER fall visits by age range and location" loading="lazy" allow="fullscreen"></iframe>
+        </div>
+        <p class="embed-help">
+          The percentages describe ER fall visits in 2024, not your personal risk. The filters are in the sidebar on the left; if it is hidden on a small screen, use the arrow at the top left.
+          If the dashboard looks blank, it may be waking up (free apps sleep when unused). Wait a few seconds, press the wake-up button if you see one, or
+          <a href="https://neiss-fall-dashboard.streamlit.app/" target="_blank" rel="noopener">open it in its own tab</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== VIDEO ===================== -->
+    <section id="walkthrough">
+      <div class="wrap">
+        <h2>Walkthrough video</h2>
+        <p class="kicker">A short screen recording of my questions, findings, and how to use the dashboard.</p>
+
+        <!-- REPLACE THE PLACEHOLDER BELOW WITH ONE OF THESE (delete the placeholder div):
+
+        Option 1: video file saved in this docs/ folder (under 100 MB):
+        <video controls preload="metadata" title="Project walkthrough">
+          <source src="walkthrough.mp4" type="video/mp4">
+          Your browser does not support embedded video.
+        </video>
+
+        Option 2: YouTube (set the video to "Unlisted"). Copy the ID from the video link:
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Project walkthrough" allowfullscreen></iframe>
+        </div>
+        -->
+        <div class="video-box" role="img" aria-label="Video placeholder">
+          <p>Walkthrough video coming soon.<br>Replace this box with the recording (see the comment in the page source).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== A/B TEST ===================== -->
+    <section id="test">
+      <div class="wrap">
+        <h2>Next Steps: What I would test</h2>
+        <p class="kicker">The data describes who ends up in the hospital. It cannot say what would help. A well-designed experiment could.</p>
+        <div class="split flip">
+          <div>
+            <p>The bed and bathroom finding suggests a simple idea: light the way from bed to bathroom. The records cannot show whether that helps (very few notes mention lighting), so I designed a study to find out. <strong>I have not run it. This is a proposal.</strong></p>
+            <p>The aim is a small, kind change that families could make at home, tested carefully before anyone is asked to rely on it.</p>
+          </div>
+          <!-- PHOTO 4: save a photo as docs/images/nextstep.jpg (landscape, about 1200 x 900). Edit the alt text. -->
+          <figure class="photo">
+            <img src="images/nextstep.webp" alt="An older couple at home in the evening" loading="lazy" onerror="this.parentElement.hidden=true">
+          </figure>
+        </div>
+        <div class="ab">
+          <div class="card">
+            <span class="tag">Version A &middot; usual care</span>
+            <p>Households get the program's standard fall-prevention handout, delivered in a visit or call of similar length.</p>
+          </div>
+          <div class="card b">
+            <span class="tag">Version B &middot; the one change</span>
+            <p>The same handout, plus motion-activated night lights along the path from bed to bathroom.</p>
+          </div>
+        </div>
+        <ul class="plain narrow">
+          <li>Prediction: adding night lights along that path will lead to fewer households reporting a fall over 12 weeks, because people can see hazards when they get up in the dark.</li>
+          <li>Who: adults 65+ living in their own homes who get up at night. Households are assigned by a random draw, at the same time, and stay in their version.</li>
+          <li>Main measure: the share of households reporting at least one fall during 12 weeks. Every household gets the full 12 weeks.</li>
+          <li>Watch for problems: lights unplugged, sleep disruption, new tripping hazards from cords.</li>
+          <li>What it would not show: even a win would not prove fewer hospital admissions. That would need a longer study.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== AI + HONESTY ===================== -->
+    <section id="checks">
+      <div class="wrap">
+        <h2>How I checked my work, including with AI</h2>
+        <p class="kicker">I asked Microsoft Copilot to critique my findings and my test, then checked its claims against the data.</p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Where the AI was right</h3>
+            <p>It agreed that these are associations, not causes, that lighting is rarely documented, and that falls are rare enough in any one household that the test needs many participants.</p>
+          </div>
+          <div class="card">
+            <h3>Where the data disagreed</h3>
+            <p>Copilot guessed that men were admitted more because of more serious injuries. In the data, women had more fractures. It also described "public property" as active, mobile older adults, but about half of that group are care-facility falls.</p>
+          </div>
+        </div>
+        <p class="narrow" style="margin-top:18px">Checking also changed my own work: I corrected how I describe the "other public property" group, and removed a claim about night-time falls that the data did not support. The notebook documents each check.</p>
+      </div>
+    </section>
+
+    <!-- ===================== FILES ===================== -->
+    <section id="files">
+      <div class="wrap">
+        <h2>Files and sources</h2>
+        <table class="facts">
+          <tbody>
+            <tr><th scope="row">Analysis notebook</th><td><a href="https://colab.research.google.com/drive/YOUR-NOTEBOOK-ID">Open the Colab notebook</a>. It holds data cleaning, charts, text analysis, the A/B proposal, and the AI comparison.</td></tr>
+            <tr><th scope="row">Dashboard code</th><td><a href="https://github.com/YOUR-USERNAME/YOUR-REPO">GitHub repository</a> (Streamlit and Plotly), with run instructions and a field guide.</td></tr>
+            <tr><th scope="row">Data</th><td>Cleaned file of 57,209 visits, plus the raw 2024 file from the <a href="https://www.cpsc.gov/Research--Statistics/NEISS-Injury-Data">CPSC NEISS page</a>.</td></tr>
+            <tr><th scope="row">Built with</th><td>Python, pandas, matplotlib, Streamlit, Plotly. AI tools (Claude and Microsoft Copilot) helped with code, drafting, and critique; they are credited in the notebook.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Falls in Older Adults &middot; Alfonzo Yates &middot; DESIGNTK 530, Fall 2026</p>
+      <p>Data: U.S. Consumer Product Safety Commission, NEISS 2024. This page describes ER visits in a public data set. It is not medical advice and does not predict any person's risk.</p>
+      <!-- Optional photo credit (not required by Unsplash or Pexels, but a nice touch). Remove this comment markup and fill it in:
+      <p>Photos: PHOTOGRAPHER NAME and PHOTOGRAPHER NAME, via Unsplash.</p> -->
+    </div>
+  </footer>
+</body>
+</html>
