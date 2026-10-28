@@ -106,12 +106,12 @@
           </tbody>
         </table>
         <div class="card note" style="margin-top:20px">
-          <h3>Limits to keep in mind</h3>
+          <h3>Limits</h3>
           <ul class="plain">
             <li>Only people who reached an ER are included. Falls without an ER visit are missing, so this cannot say how often older adults fall.</li>
             <li>"Admitted" can reflect an illness found during the visit, not how bad the fall injury was.</li>
             <li>Notes are short. I found situations by searching for keywords, which is imperfect.</li>
-            <li>Percentages are sample percentages, not national totals. Using the data's sampling weights lowers the overall share from 32.5% to 29.7%, but the ordering of the groups stays the same.</li>
+            <li>Percentages are sample percentages, not national totals. Using the data's sampling weights lowers the overall share from 32.5% to 29.7% but keeps the order of the groups.</li>
           </ul>
         </div>
       </div>
@@ -134,7 +134,7 @@
         </figure>
 
         <ol class="findings">
-          <li><strong>Admission rises with age.</strong> 28% of visits at ages 65&ndash;74, 33% at 75&ndash;84, and 37% at 85 and older.</li>
+          <li><strong>Admission rises with age.</strong> 28% at ages 65&ndash;74, 33% at 75&ndash;84, and 37% at 85 and older.</li>
           <li><strong>Medical situations stand out.</strong> When the note describes being found on the floor or unable to get up, 50% ended in admission. For dizziness or fainting it was 47%, and for dementia or confusion 42%.</li>
           <li><strong>Bedroom and bathroom falls were admitted more often</strong> (about 37%) than other falls (about 32%).</li>
           <li><strong>Stairs were not the top risk.</strong> Notes mentioning stairs or steps were admitted 29% of the time, below the 32.5% average. This does not mean stairs are safe. It only describes people who came to the ER.</li>
@@ -153,7 +153,7 @@
         </figure>
         <figure>
           <img src="images/themes.png" alt="Horizontal bar chart of the share admitted for visits whose note mentions each situation. Found down 50 percent, dizzy or fainted 47, dementia or confusion 42, bathroom 38, bed 37, stairs 29, outdoors 22, tripped 22. Average line at 32.5 percent." width="1440" height="864">
-          <figcaption>The situation described in the note matters. Amber bars are above the average for all visits. A note can mention more than one situation, and these rates are not adjusted for age. I checked: adjusting for age barely changes them.</figcaption>
+          <figcaption>A visit is counted in every theme its note mentions, so the bars overlap. The eight bars add up to 44,686 mentions, but only 35,830 visits match at least one theme, and 7,958 visits (14% of the 57,209) match two or more. For example, 524 visits mention both bed and bathroom, and 308 mention both found down and dizzy. The bars should not be added together. Rates are not adjusted for age; adjusting barely changes them. Amber bars are above the 32.5% average.</figcaption>
         </figure>
 
         <h3>In their own words</h3>
@@ -171,13 +171,12 @@
     <section id="dashboard">
       <div class="wrap">
         <h2>Explore it yourself</h2>
-        <p class="kicker">Pick an age range and where the fall happened. The dashboard shows how ER fall visits like that ended, and how many visits it is based on.</p>
+        <p class="kicker">Choose an age range and where the fall happened to see how similar ER visits ended.</p>
         <div class="embed-frame">
           <iframe src="https://neiss-fall-dashboard.streamlit.app/?embed=true" title="Interactive dashboard: ER fall visits by age range and location" loading="lazy" allow="fullscreen"></iframe>
         </div>
         <p class="embed-help">
-          The percentages describe ER fall visits in 2024, not your personal risk. The filters are in the sidebar on the left; if it is hidden on a small screen, use the arrow at the top left.
-          If the dashboard looks blank, it may be waking up (free apps sleep when unused). Wait a few seconds, press the wake-up button if you see one, or
+          The percentages describe 2024 ER fall visits, not personal risk. The filters are in the sidebar; on a small screen, use the arrow at the top left. If the dashboard looks blank it may be waking up, so wait a few seconds or
           <a href="https://neiss-fall-dashboard.streamlit.app/" target="_blank" rel="noopener">open it in its own tab</a>.
         </p>
       </div>
@@ -201,10 +200,10 @@
     <section id="test">
       <div class="wrap">
         <h2>Next Steps: What I would test</h2>
-        <p class="kicker">The data describes who ends up in the hospital. It cannot say what would help. A well-designed experiment could.</p>
+        <p class="kicker">The data describes who ends up in the hospital. It cannot say what would help.</p>
         <div class="split flip">
           <div>
-            <p>The bed and bathroom finding suggests a simple idea: light the way from bed to bathroom. The records cannot show whether that helps (very few notes mention lighting), so I designed a study to find out. <strong>I have not run it. This is a proposal.</strong></p>
+            <p>The bed and bathroom finding suggests lighting the path from bed to bathroom. Very few notes mention lighting, so the records cannot test this, and I designed a study that could. <strong>I have not run it. This is a proposal.</strong></p>
             <p>The aim is a small, kind change that families could make at home, tested carefully before anyone is asked to rely on it.</p>
           </div>
 
