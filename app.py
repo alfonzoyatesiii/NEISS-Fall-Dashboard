@@ -13,7 +13,23 @@ from helpers import (AGE_LABELS, ALL_LOCATIONS, filter_data, headline, load_data
 DATA_PATH = Path(__file__).parent / "dashboard_data.csv"
 BLUE, ORANGE, GRAY, PURPLE, GREEN = "#4682b4", "#e07b00", "#8a8a8a", "#7b3f98", "#2e8b57"
 
-st.set_page_config(page_title="Falls in Older Adults (NEISS 2024)", layout="wide")
+st.set_page_config(page_title="Falls in Older Adults (NEISS 2024)", layout="wide", initial_sidebar_state="expanded")
+
+# Make the built-in open/close arrow for the sidebar easier to see (selectors cover older and newer Streamlit versions).
+st.markdown(
+    """
+    <style>
+    [data-testid="stSidebarCollapseButton"] button, [data-testid="stExpandSidebarButton"],
+    [data-testid="collapsedControl"] button, [data-testid="stSidebarCollapsedControl"] button {
+        background: #fdf0d0; border: 2px solid #e0a030; border-radius: 8px; color: #0b1f3a;
+    }
+    [data-testid="stSidebarCollapseButton"] button:hover, [data-testid="stExpandSidebarButton"]:hover {
+        background: #f6d98c;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 @st.cache_data
@@ -27,29 +43,30 @@ n_all = len(df)
 base_admit = df["admitted"].mean() * 100
 
 # ---------------------------------------------------------------- sidebar: the interaction
+st.sidebar.caption("Tip: close this panel with the « arrow at its top right for a wider view of the charts.")
 st.sidebar.header("Choose a group of ED fall visits")
 age_range = st.sidebar.slider("Age range (years)", min_value=65, max_value=110, value=(65, 110), step=1,
                               help="Set both ends to the same number to look at one age.")
 location_options = [ALL_LOCATIONS] + df["location_label"].value_counts().index.tolist()
 location = st.sidebar.selectbox("Where the fall happened", location_options,
-                                help="This is the incident location the hospital recorded. 'Not recorded' means the hospital left it blank.")
+                                help="The incident location the hospital recorded. 'Not recorded' means it was left blank. 'Other public property' includes many care-facility falls: about half of its notes mention a nursing or assisted-living facility.")
 selection = filter_data(df, age_range, location)
 group_label = population_label(age_range, location)
 st.sidebar.markdown(f"**{len(selection):,}** of {n_all:,} visits match.")
+st.sidebar.info(
+    "**How to read the percentages.** They show how often ED fall visits *like this one* ended in admission in the 2024 data. "
+    "They are **not** a personal risk prediction: everyone in the data already went to an ED after a fall, and "
+    "falls that never reach an ED are missing."
+)
 st.sidebar.caption("Source: U.S. CPSC NEISS 2024. Counts are visits in the sample, not national totals.")
 
 # ---------------------------------------------------------------- header
 st.title("Falls in older adults: which visits end in the hospital?")
 st.markdown(
-    f"This dashboard explores **{n_all:,} emergency-department (ED) visits in 2024 for falls by adults 65 and older** "
-    "from the U.S. Consumer Product Safety Commission's injury surveillance system (NEISS). "
-    "Use the filters on the left to look at a group of visits."
+    f"**{n_all:,} emergency-department (ED) visits in 2024** for falls by adults 65 and older "
+    "(U.S. CPSC injury surveillance data). Use the panel on the left to choose a group of visits."
 )
-st.info(
-    "**How to read the percentages.** They show how often ED fall visits *like this one* ended in hospital admission in the 2024 data. "
-    "They are **not** a personal risk prediction: everyone in the data already went to an ED after a fall, and "
-    "falls that never reach an ED are missing."
-)
+st.caption("Want more room for the charts? Close the left panel with the « arrow at its top right, and reopen it with the » arrow at the top left.")
 
 if selection.empty:
     st.warning(f"No ED fall visits match **{group_label}**. Try a wider age range or choose 'All locations'.")
@@ -186,29 +203,18 @@ with tab_text:
 # ---------------------------------------------------------------- tab 4: findings and limits
 with tab_findings:
     st.subheader("Main findings")
-    st.caption("These findings use all 57,209 ED fall visits by adults 65+. They do not change when you use the filters.")
+    st.caption("These use all 57,209 ED fall visits by adults 65+ and do not change with the filters.")
     st.markdown(
-        "1. **About one in three ED fall visits ended in admission** (32.5%). Two in three were treated and released.\n"
-        "2. **Admission rises with age:** 28% at ages 65-74, 33% at 75-84, and 37% at 85 and over.\n"
-        "3. **Falls at home ended in admission more often** (35.7%) than falls on other public property (27.1%), in the street (23.3%), or at recreation sites (20.3%).\n"
-        "4. **Medical situations stand out.** Notes about dizziness or fainting (47%) and being found down or unable to get up (50%) were admitted far more often than average.\n"
-        "5. **Bed and bathroom falls were admitted more often** (about 37%) than other falls (about 32%). **Stairs falls were not** (29%), which went against my expectation.\n"
-        "6. **Few notes mention darkness** (0.2%) or night-time (1.9%), so these data cannot say whether lighting matters."
+        "1. About one in three visits ended in admission (32.5%). Two in three were treated and released.\n"
+        "2. Admission rises with age: 28% at ages 65-74, 33% at 75-84, and 37% at 85 and over.\n"
+        "3. Falls at home ended in admission more often (35.7%) than falls on other public property (27.1%). About half of the "
+        "'other public property' notes mention a nursing or assisted-living facility.\n"
+        "4. Notes about dizziness or fainting (47%) and being found down or unable to get up (50%) were admitted most often."
     )
-    st.subheader("What this means in practice")
+    st.subheader("Limits")
     st.markdown(
-        "Prevention efforts may do well to look at the bedroom and bathroom, and at people who feel dizzy or may lie on the floor for a long time, "
-        "and not only at stairs. These are leads to test, not proof of what works. My proposed next step is an A/B test of motion-activated night lights "
-        "along the bed-to-bathroom path, described in the project notebook (Section 3)."
+        "- Only people who reached an ED are included, so these are not rates of falling.\n"
+        "- 'Admitted' can reflect an illness found during the visit. Patterns are not adjusted for age or health.\n"
+        "- Notes are short and situations come from keyword searches. Groups under 100 visits are noisy."
     )
-    st.subheader("Limits to keep in mind")
-    st.markdown(
-        "- **Only people who reached an ED are included.** Falls without an ED visit are missing, so these are not rates of falling.\n"
-        "- **'Admitted' can reflect an illness** found during the visit, not how serious the fall injury was.\n"
-        "- **Patterns are not adjusted for age or health.** For example, older or frailer people may be over-represented in some situations.\n"
-        "- **Hospital notes are short.** The situations come from keyword searches, which miss some details and sometimes match the wrong thing.\n"
-        "- **Counts are from a sample of hospitals**, not national totals. The data record location for about three in four visits.\n"
-        "- **Small groups are noisy.** Groups with fewer than 100 visits should be read cautiously."
-    )
-    st.caption("Source: U.S. Consumer Product Safety Commission, National Electronic Injury Surveillance System (NEISS), 2024. "
-               "Cleaning and analysis are documented in the project notebook.")
+    st.caption("Source: U.S. CPSC NEISS 2024. Cleaning and analysis are in the project notebook.")
