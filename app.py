@@ -21,10 +21,10 @@ st.markdown(
     <style>
     [data-testid="stSidebarCollapseButton"] button, [data-testid="stExpandSidebarButton"],
     [data-testid="collapsedControl"] button, [data-testid="stSidebarCollapsedControl"] button {
-        background: #fdf0d0; border: 2px solid #e0a030; border-radius: 8px; color: #0b1f3a;
+        background: #fdecea; border: 2px solid #c0392b; border-radius: 8px; color: #c0392b;
     }
     [data-testid="stSidebarCollapseButton"] button:hover, [data-testid="stExpandSidebarButton"]:hover {
-        background: #f6d98c;
+        background: #f8c9c4;
     }
     </style>
     """,
